@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rising Scholars | Seattle After-School Program</title>
+<meta name="description" content="Rising Scholars is a Seattle-based after-school enrichment program for school-age kids. Join our interest list for updates on locations and enrollment.">
+<style>
+  :root {
+    --ink: #1c2a2e;
+    --ink-soft: #4a5a5e;
+    --paper: #fdfbf6;
+    --paper-alt: #f3ede1;
+    --brand: #1f6f5c;
+    --brand-dark: #175445;
+    --accent: #e8a33d;
+    --border: #e2dccd;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(253, 251, 246, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px; max-width: 1080px; margin: 0 auto;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.15rem; text-decoration: none; color: var(--ink); }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--brand), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 1rem;
+  }
+  nav.links { display: flex; gap: 28px; font-size: 0.95rem; font-weight: 500; }
+  nav.links a { text-decoration: none; color: var(--ink-soft); transition: color .15s; }
+  nav.links a:hover { color: var(--brand); }
+  .nav-cta {
+    background: var(--brand); color: #fff !important; padding: 9px 18px;
+    border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    transition: background .15s;
+  }
+  .nav-cta:hover { background: var(--brand-dark); }
+  .menu-toggle { display: none; }
+
+  .hero {
+    padding: 90px 0 70px;
+    background: radial-gradient(circle at 80% 0%, #eaf3ef 0%, var(--paper) 55%);
+  }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+  .eyebrow {
+    display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--brand-dark); background: #e2f1ec;
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
+  }
+  h1 { font-size: 2.75rem; line-height: 1.12; margin: 0 0 18px; letter-spacing: -0.01em; }
+  h1 span { color: var(--brand); }
+  .hero p.lead { font-size: 1.12rem; color: var(--ink-soft); margin: 0 0 30px; max-width: 46ch; }
+  .btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 13px 26px; border-radius: 999px; font-weight: 600;
+    text-decoration: none; font-size: 0.98rem; transition: transform .15s, box-shadow .15s;
+  }
+  .btn-primary { background: var(--brand); color: #fff; box-shadow: 0 6px 18px rgba(31,111,92,0.25); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(31,111,92,0.32); }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+
+  .hero-card {
+    background: #fff; border: 1px solid var(--border); border-radius: 20px;
+    padding: 28px; box-shadow: 0 20px 50px -25px rgba(28,42,46,0.35);
+  }
+  .hero-card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+  .hero-card p { margin: 0 0 18px; color: var(--ink-soft); font-size: 0.92rem; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat { background: var(--paper-alt); border-radius: 12px; padding: 16px; }
+  .stat .num { font-size: 1.5rem; font-weight: 800; color: var(--brand-dark); }
+  .stat .label { font-size: 0.8rem; color: var(--ink-soft); }
+
+  section { padding: 76px 0; }
+  section.alt { background: var(--paper-alt); }
+  .section-head { max-width: 640px; margin: 0 0 44px; }
+  .section-head .eyebrow { margin-bottom: 12px; }
+  .section-head h2 { font-size: 2rem; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .section-head p { color: var(--ink-soft); margin: 0; font-size: 1.02rem; }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .about-grid p { color: var(--ink-soft); margin: 0 0 16px; }
+  .value-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .value-list li { display: flex; gap: 12px; align-items: flex-start; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+  .value-list .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 7px; flex-shrink: 0; }
+  .value-list strong { display: block; font-size: 0.96rem; }
+  .value-list span.desc { color: var(--ink-soft); font-size: 0.88rem; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .prog-card {
+    background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 26px; transition: transform .15s, box-shadow .15s;
+  }
+  .prog-card:hover { transform: translateY(-3px); box-shadow: 0 16px 30px -20px rgba(28,42,46,0.35); }
+  .prog-icon {
+    width: 44px; height: 44px; border-radius: 11px; background: var(--paper-alt);
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 16px;
+  }
+  .prog-card h3 { margin: 0 0 8px; font-size: 1.08rem; }
+  .prog-card p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
+
+  .status-banner {
+    display: flex; gap: 16px; align-items: flex-start; background: #fff;
+    border: 1px solid var(--border); border-left: 4px solid var(--accent);
+    border-radius: 12px; padding: 20px 22px; margin-top: 36px;
+  }
+  .status-banner .badge {
+    flex-shrink: 0; font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; background: #fdf1dd; color: #9a6a1c; padding: 5px 10px; border-radius: 999px;
+  }
+  .status-banner p { margin: 4px 0 0; color: var(--ink-soft); font-size: 0.92rem; }
+
+  .enroll-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 44px; }
+  .enroll-copy p { color: var(--ink-soft); }
+  .enroll-copy ul { padding-left: 20px; color: var(--ink-soft); }
+  .enroll-copy li { margin-bottom: 8px; }
+
+  form.interest-form {
+    background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 30px; display: grid; gap: 16px;
+  }
+  .form-row { display: grid; gap: 6px; }
+  .form-row.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  label { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+  input, select, textarea {
+    font: inherit; padding: 11px 13px; border-radius: 9px; border: 1.5px solid var(--border);
+    background: var(--paper); color: var(--ink); width: 100%;
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--brand); }
+  textarea { resize: vertical; min-height: 90px; }
+  .submit-btn {
+    background: var(--brand); color: #fff; border: none; padding: 13px 24px;
+    border-radius: 999px; font-weight: 600; font-size: 0.98rem; cursor: pointer; justify-self: start;
+    transition: background .15s;
+  }
+  .submit-btn:hover { background: var(--brand-dark); }
+  .form-note { font-size: 0.78rem; color: var(--ink-soft); margin: 0; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .contact-card {
+    background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 26px;
+  }
+  .contact-card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+  .contact-card a.mail { color: var(--brand-dark); font-weight: 600; text-decoration: none; }
+  .contact-card a.mail:hover { text-decoration: underline; }
+
+  footer {
+    border-top: 1px solid var(--border); padding: 34px 0; background: var(--paper-alt);
+  }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  footer p { margin: 0; font-size: 0.85rem; color: var(--ink-soft); }
+  footer .foot-links { display: flex; gap: 20px; font-size: 0.85rem; }
+  footer .foot-links a { text-decoration: none; color: var(--ink-soft); }
+  footer .foot-links a:hover { color: var(--brand); }
+
+  @media (max-width: 860px) {
+    nav.links, .nav-cta { display: none; }
+    .hero .wrap, .about-grid, .enroll-grid, .contact-grid { grid-template-columns: 1fr; }
+    .card-grid { grid-template-columns: 1fr 1fr; }
+    h1 { font-size: 2.1rem; }
+  }
+  @media (max-width: 560px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .form-row.two { grid-template-columns: 1fr; }
+    .hero { padding: 60px 0 46px; }
+    section { padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="brand">
+      <span class="brand-mark">RS</span>
+      Rising Scholars
+    </a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#enroll">Interest List</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#enroll" class="nav-cta">Join Interest List</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Seattle · School-Age Enrichment</span>
+        <h1>After-school time that helps kids <span>grow, not just get by</span>.</h1>
+        <p class="lead">Rising Scholars is a new Seattle after-school program for kids ages 5–13, blending homework support, hands-on enrichment, and real playtime — led by caring, background-checked staff.</p>
+        <div class="btn-row">
+          <a href="#enroll" class="btn btn-primary">Join the Interest List</a>
+          <a href="#about" class="btn btn-ghost">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>Where we are today</h3>
+        <p>We're in our launch phase — finalizing our school location and state licensing. Sign up now to be first in line when enrollment opens.</p>
+        <div class="stat-grid">
+          <div class="stat"><div class="num">5–13</div><div class="label">Ages served</div></div>
+          <div class="stat"><div class="num">1:15</div><div class="label">Staff-to-child ratio</div></div>
+          <div class="stat"><div class="num">Seattle</div><div class="label">Based &amp; growing</div></div>
+          <div class="stat"><div class="num">2026</div><div class="label">Launching soon</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Our Mission</span>
+        <h2>Enrichment that meets kids where they are</h2>
+        <p>We believe the hours after school matter as much as the hours in it. Rising Scholars gives Seattle families a safe, structured, and genuinely fun place for kids to land at the end of the school day.</p>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>Rising Scholars was founded to close the gap between the school bell and the end of the workday — with a program that's more than childcare. Every afternoon combines academic support, creative and physical activities, and unstructured social time, run by a team that's licensed, background-checked, and genuinely invested in kids.</p>
+          <p>We're currently working with Seattle Public Schools on our first host site and completing Washington DCYF licensing. This site will be updated as those milestones lock in — join the interest list below to hear the moment we do.</p>
+        </div>
+        <ul class="value-list">
+          <li><span class="dot"></span><div><strong>Safety first</strong><span class="desc">Background-checked staff, licensed ratios, and a facility that passes state inspection before we open.</span></div></li>
+          <li><span class="dot"></span><div><strong>Real enrichment</strong><span class="desc">Homework help paired with STEM, arts, and movement — not just a holding pen until pickup.</span></div></li>
+          <li><span class="dot"></span><div><strong>Community-rooted</strong><span class="desc">Built in partnership with Seattle schools and families, not a franchise formula.</span></div></li>
+          <li><span class="dot"></span><div><strong>Honest and transparent</strong><span class="desc">We'll tell you exactly where we are in licensing and enrollment — no overpromising.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What We Offer</span>
+        <h2>A balanced afternoon, every day</h2>
+        <p>Our program blocks are designed to give kids what a good afternoon needs: help with homework, room to create, room to move, and time to just be kids.</p>
+      </div>
+      <div class="card-grid">
+        <div class="prog-card">
+          <div class="prog-icon">📚</div>
+          <h3>Homework &amp; Academic Support</h3>
+          <p>Quiet, supervised time to finish homework with help available from staff, plus light tutoring in reading and math.</p>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">🔬</div>
+          <h3>STEM &amp; Hands-On Projects</h3>
+          <p>Rotating science, engineering, and coding activities that turn curiosity into real projects kids can show off.</p>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">🎨</div>
+          <h3>Arts &amp; Creative Time</h3>
+          <p>Drawing, crafts, music, and storytelling sessions that give kids a creative outlet after a full day of structure.</p>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">⚽</div>
+          <h3>Active Play</h3>
+          <p>Outdoor games and movement breaks built into every day, because kids need to move after sitting all day.</p>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">🤝</div>
+          <h3>Social &amp; Emotional Learning</h3>
+          <p>Small-group activities that build friendship skills, confidence, and healthy ways to handle big feelings.</p>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">🍎</div>
+          <h3>Snack &amp; Downtime</h3>
+          <p>A daily snack and unstructured free time, because not every minute needs to be programmed.</p>
+        </div>
+      </div>
+      <div class="status-banner">
+        <span class="badge">Launch status</span>
+        <p><strong>Exact daily schedule, hours, and pricing will be posted here once our school site and DCYF license are confirmed.</strong> Everything above reflects our program design — join the interest list to get the specifics first.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="enroll">
+    <div class="wrap enroll-grid">
+      <div class="enroll-copy">
+        <span class="eyebrow">Get on the List</span>
+        <h2 style="font-size:2rem; margin:0 0 14px; letter-spacing:-0.01em;">Be first to know when we open</h2>
+        <p>Tell us a bit about your family and we'll reach out as soon as enrollment opens — including our confirmed location, hours, and pricing.</p>
+        <ul>
+          <li>No commitment — just early access to updates</li>
+          <li>We'll never share your information</li>
+          <li>Priority notice for families near our confirmed school site</li>
+        </ul>
+      </div>
+
+      <form class="interest-form" id="interestForm" action="mailto:hello@therisingscholars.com" method="POST" enctype="text/plain">
+        <div class="form-row two">
+          <div class="form-row">
+            <label for="parentName">Parent / Guardian name</label>
+            <input type="text" id="parentName" name="Parent Name" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email" required>
+          </div>
+        </div>
+        <div class="form-row two">
+          <div class="form-row">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="Phone">
+          </div>
+          <div class="form-row">
+            <label for="childAge">Child's age / grade</label>
+            <input type="text" id="childAge" name="Child Age or Grade" placeholder="e.g. 7 / 2nd grade">
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="neighborhood">Neighborhood or nearest school</label>
+          <input type="text" id="neighborhood" name="Neighborhood or School" placeholder="e.g. Beacon Hill, near Kimball Elementary">
+        </div>
+        <div class="form-row">
+          <label for="message">Anything else we should know? (optional)</label>
+          <textarea id="message" name="Message"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Join the Interest List</button>
+        <p class="form-note">Submitting opens your email app with your details pre-filled to hello@therisingscholars.com — just hit send.</p>
+      </form>
+    </div>
+  </section>
+
+  <section id="contact" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Contact</span>
+        <h2>Questions? Reach out any time.</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Email</h3>
+          <p style="color:var(--ink-soft); font-size:0.92rem; margin:0 0 10px;">The fastest way to reach us with questions about enrollment, partnership, or press.</p>
+          <a class="mail" href="mailto:hello@therisingscholars.com">hello@therisingscholars.com</a>
+        </div>
+        <div class="contact-card">
+          <h3>Based in</h3>
+          <p style="color:var(--ink-soft); font-size:0.92rem; margin:0;">Seattle, Washington. Currently finalizing our first host school — check back for a confirmed address.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Rising Scholars LLC. All rights reserved.</p>
+    <div class="foot-links">
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
