@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mBot CS Fundamentals</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #22303c;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: #4c97ff;
+    color: white;
+    padding: 10px 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  header h1 { font-size: 16px; margin: 0; font-weight: 700; }
+  header .sub { font-size: 13px; opacity: 0.9; }
+
+  .layout { flex: 1; display: flex; min-height: 0; }
+
+  nav {
+    width: 250px;
+    flex-shrink: 0;
+    background: #f4f6fa;
+    border-right: 1px solid #dde3ea;
+    overflow-y: auto;
+    padding: 8px 0;
+  }
+  nav .unit-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #6b7885;
+    padding: 14px 16px 4px;
+    font-weight: 700;
+  }
+  nav button.lesson-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #22303c;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+  }
+  nav button.lesson-link:hover { background: #e9edf3; }
+  nav button.lesson-link.active {
+    background: #e3edff;
+    border-left-color: #4c97ff;
+    font-weight: 600;
+  }
+
+  main { flex: 1; display: flex; min-width: 0; }
+
+  .panel {
+    width: 380px;
+    flex-shrink: 0;
+    overflow-y: auto;
+    padding: 20px;
+    border-right: 1px solid #dde3ea;
+  }
+  .panel .concept {
+    background: #fff6dc;
+    border: 1px solid #f0dfa0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .panel .concept b { color: #8a6d00; }
+  .panel h2 { font-size: 19px; margin: 0 0 10px; }
+  .panel p.instructions { font-size: 14px; line-height: 1.55; }
+  .panel code {
+    background: #eef1f5;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+  .panel .open-note {
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: #6b7885;
+    border-top: 1px solid #eceff3;
+    padding-top: 14px;
+  }
+
+  iframe { flex: 1; border: none; min-width: 0; }
+
+  @media (max-width: 800px) {
+    .layout { flex-direction: column; }
+    nav { width: 100%; max-height: 160px; border-right: none; border-bottom: 1px solid #dde3ea; }
+    main { flex-direction: column; }
+    .panel { width: 100%; border-right: none; border-bottom: 1px solid #dde3ea; max-height: 40vh; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>mBot CS Fundamentals</h1>
+  <span class="sub">code.org-style lessons, real robot</span>
+</header>
+
+<div class="layout">
+  <nav id="nav"></nav>
+  <main>
+    <div class="panel" id="panel"></div>
+    <iframe id="editor-frame" title="Xcratch editor"></iframe>
+  </main>
+</div>
+
+<script>
+const BASE = 'https://therisingscholars.com/extensions/mbot/curriculum';
+const EDITOR = 'https://xcratch.github.io/editor/#';
+
+const UNITS = [
+  {
+    name: 'Sequencing',
+    concept: 'The computer does exactly what you tell it, in exactly the order you tell it. Order matters.',
+    lessons: [
+      {
+        slug: '1.1-first-drive',
+        title: '1.1 — First Drive',
+        html: `Just <code>connect to mBot</code> &rarr; <code>move forward at speed 150 for 1 seconds</code> &rarr;
+        <code>stop mBot</code>. The point isn't the code, it's noticing that if <code>stop</code> came first,
+        the robot would never move. Have the kid predict what happens <b>before</b> clicking the green flag.`
+      },
+      {
+        slug: '1.2-trace-a-path',
+        title: '1.2 — Trace a Path',
+        html: `Put a piece of tape on the floor in an L-shape or a few turns. The kid writes a sequence of
+        <code>move</code>/<code>turn</code> blocks to make the robot follow it, no loops yet — literally one
+        block per turn. This is the "why loops would help" setup for Unit 2, deliberately tedious if the path
+        repeats a shape.`
+      },
+      {
+        slug: '1.3-obstacle-course-blind',
+        title: '1.3 — Obstacle Course, Blind',
+        html: `Set up 2-3 obstacles (books, blocks). Kid sequences moves/turns to navigate around them purely
+        by pre-planning — no sensors. Debugging here <b>is</b> the lesson: when the robot hits something,
+        which block was wrong?`
+      }
+    ]
+  },
+  {
+    name: 'Loops',
+    concept: '<code>repeat</code> says "do this again" instead of writing it out N times.',
+    lessons: [
+      {
+        slug: '2.1-repeat-forward',
+        title: '2.1 — Repeat Forward',
+        html: `Same single move block from 1.1, but ask the kid to make the robot go forward 4 separate times
+        with pauses between — first by copy-pasting the block 4 times, then by deleting all but one and
+        wrapping it in <code>repeat 4</code>. Same result, way less code.`
+      },
+      {
+        slug: '2.2-square-with-a-loop',
+        title: '2.2 — Square with a Loop',
+        html: `Revisit 1.2's path tracing, but for an actual square. Long way: 4 pairs of move/turn blocks
+        written out. Short way: <code>repeat 4</code> around one move+turn pair. Have the kid do it the long
+        way first if they didn't in Unit 1, then show them the loop version side by side.`
+      },
+      {
+        slug: '2.3-disco-drive',
+        title: '2.3 — Disco Drive',
+        html: `<code>repeat 10</code>: drive forward a bit, flash the LEDs a color, repeat. Loops aren't just
+        for movement — same block, reused for lights.`
+      }
+    ]
+  },
+  {
+    name: 'Events',
+    concept: '"When X happens, do Y" — the program reacts instead of just running top to bottom.',
+    lessons: [
+      {
+        slug: '3.1-remote-control',
+        title: '3.1 — Remote Control',
+        html: `Four separate scripts: <code>when [up arrow] key pressed</code> &rarr; drive forward a bit,
+        same for down/left/right. Turns the robot into a live-controlled RC car. This is the single most fun
+        lesson in the whole sequence — good one to lead with if engagement is flagging.`
+      },
+      {
+        slug: '3.2-starting-gate',
+        title: '3.2 — Starting Gate',
+        html: `<code>when green flag clicked</code> &rarr; <code>wait until &lt;onboard button pressed?&gt;</code>
+        &rarr; flash the LEDs green &rarr; drive a short course. The robot sits and waits; nothing happens
+        until the physical button is pressed. First lesson mixing a hat-block event with one of our own
+        sensor blocks.`
+      },
+      {
+        slug: '3.3-race-the-clock',
+        title: '3.3 — Race the Clock',
+        html: `<code>when green flag clicked</code> &rarr; <code>reset timer</code> &rarr; wait for the button
+        &rarr; drive a course &rarr; say the elapsed <code>timer</code> value. Turns any of the earlier
+        driving lessons into a race against yourself.`
+      }
+    ]
+  },
+  {
+    name: 'Conditionals',
+    concept: '<code>if/else</code> — the program makes a decision based on something it senses, right now, not something pre-planned.',
+    lessons: [
+      {
+        slug: '4.1-stop-before-you-crash',
+        title: '4.1 — Stop Before You Crash',
+        html: `<code>repeat until &lt;distance (cm) on port 3 &lt; 10&gt;</code>: drive forward a little. Point
+        the robot at a wall and watch it brake on its own. Contrast with 1.3's <b>blind</b> obstacle course:
+        same problem, but now the robot can actually see.`
+      },
+      {
+        slug: '4.2-line-follower',
+        title: '4.2 — Line Follower',
+        html: `Tape a black line on the floor. <code>forever</code>: if the left sensor is on black, turn
+        left; else if the right sensor is on black, turn right; else move forward. The classic
+        line-following robot demo.`
+      },
+      {
+        slug: '4.3-smart-obstacle-course',
+        title: '4.3 — Smart Obstacle Course',
+        html: `Combine 4.1 and 4.2: follow the line, but stop and flash red if something's within 10cm ahead.
+        Capstone lesson — uses a block from every prior unit (sequencing, a loop, an event to start, two
+        conditionals).`
+      }
+    ]
+  }
+];
+
+const navEl = document.getElementById('nav');
+const panelEl = document.getElementById('panel');
+const frameEl = document.getElementById('editor-frame');
+
+function lessonBySlug(slug) {
+  for (const unit of UNITS) {
+    for (const lesson of unit.lessons) {
+      if (lesson.slug === slug) return {unit, lesson};
+    }
+  }
+  return null;
+}
+
+function renderNav(activeSlug) {
+  navEl.innerHTML = '';
+  UNITS.forEach(unit => {
+    const title = document.createElement('div');
+    title.className = 'unit-title';
+    title.textContent = unit.name;
+    navEl.appendChild(title);
+    unit.lessons.forEach(lesson => {
+      const btn = document.createElement('button');
+      btn.className = 'lesson-link' + (lesson.slug === activeSlug ? ' active' : '');
+      btn.textContent = lesson.title;
+      btn.onclick = () => selectLesson(lesson.slug);
+      navEl.appendChild(btn);
+    });
+  });
+}
+
+function renderPanel(unit, lesson) {
+  panelEl.innerHTML = `
+    <div class="concept"><b>Concept:</b> ${unit.concept}</div>
+    <h2>${lesson.title}</h2>
+    <p class="instructions">${lesson.html}</p>
+    <div class="open-note">
+      Needs Chrome (Web Bluetooth isn't in Safari or any iOS browser).
+      Once connected: <code>connect to mBot</code>, pick the robot from the Bluetooth list, then build on
+      the starter blocks.
+    </div>
+  `;
+}
+
+function selectLesson(slug) {
+  const found = lessonBySlug(slug);
+  if (!found) return;
+  renderNav(slug);
+  renderPanel(found.unit, found.lesson);
+  frameEl.src = EDITOR + BASE + '/' + slug + '.sb3';
+  history.replaceState(null, '', '#' + slug);
+}
+
+const startSlug = (location.hash || '').replace('#', '') || UNITS[0].lessons[0].slug;
+selectLesson(lessonBySlug(startSlug) ? startSlug : UNITS[0].lessons[0].slug);
+</script>
+
+</body>
+</html>
