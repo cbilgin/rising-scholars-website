@@ -234,6 +234,113 @@ const UNITS = [
         conditionals).`
       }
     ]
+  },
+  {
+    name: 'Randomness',
+    concept: 'The computer can pick unpredictably &mdash; same code, different result each time.',
+    lessons: [
+      {
+        slug: '5.1-mood-light',
+        title: '5.1 — Mood Light',
+        html: `<code>repeat 10</code>: set the LEDs to <code>pick random 0 to 255</code> for red/green/blue,
+        wait half a second. Pure cause-and-effect, no stakes &mdash; a good warm-up for the concept.`
+      },
+      {
+        slug: '5.2-random-wait-react-fast',
+        title: '5.2 — Random Wait, React Fast',
+        html: `Wait a random 1-4 seconds, then flash the LEDs yellow as the "go" signal and start the timer.
+        Slap the onboard button as fast as you can; your reaction time is said out loud. Combines randomness
+        with the events and timer skills from Unit 3.`
+      },
+      {
+        slug: '5.3-random-patrol',
+        title: '5.3 — Random Patrol',
+        html: `<code>repeat 8</code>: drive forward at a <code>pick random</code> speed for a
+        <code>pick random</code> duration, then turn. Unpredictable wandering purely from randomized
+        numbers &mdash; no branching logic needed yet.`
+      }
+    ]
+  },
+  {
+    name: 'Variables',
+    concept: 'A variable is a labeled box that remembers a number, so the program can use it later.',
+    lessons: [
+      {
+        slug: '6.1-lap-counter',
+        title: '6.1 — Lap Counter',
+        html: `A <code>laps</code> variable increments once per trip around 2.2's square, then gets said out
+        loud at the end. The most concrete possible intro to variables &mdash; literally counting.`
+      },
+      {
+        slug: '6.2-best-time-ever',
+        title: '6.2 — Best Time Ever',
+        html: `Extends 3.3's race: a <code>best time</code> variable (starts at 999) is only updated if the
+        new run actually beats it, with a "New best!" moment when it does. Variables as memory
+        <b>across</b> runs &mdash; click the green flag again and again to keep trying to beat your own
+        record.`
+      },
+      {
+        slug: '6.3-countdown-launch',
+        title: '6.3 — Countdown Launch',
+        html: `A <code>count</code> variable counts down 5-4-3-2-1 (said out loud, one per second), then
+        "GO!" and the robot drives off. Ties variables to something viscerally familiar &mdash; rocket
+        launches &mdash; while reinforcing the loop skills from Unit 2.`
+      }
+    ]
+  },
+  {
+    name: 'Mission Challenges',
+    concept: 'Real robotics competitions give you a goal, not a recipe &mdash; no new blocks in this unit, just combining what\'s already known.',
+    lessons: [
+      {
+        slug: '7.1-precision-parking',
+        title: '7.1 — Precision Parking',
+        html: `Tape a "parking spot" on the floor. Starting from a measured distance away, the robot has to
+        stop with its front bumper inside the spot, using the ultrasonic sensor from 4.1. Score by how close
+        it lands.`
+      },
+      {
+        slug: '7.2-line-race',
+        title: '7.2 — Line Race',
+        html: `A time trial on 4.2's line follower &mdash; see how much the driving speed can be pushed up
+        before it loses the line.`
+      },
+      {
+        slug: '7.3-dont-touch-it',
+        title: '7.3 — Don\'t Touch It',
+        html: `4.3's smart obstacle course, reframed as a scored competition: finish time, minus points for
+        touching anything along the way. Same code as before, but now it's a game with stakes.`
+      }
+    ]
+  },
+  {
+    name: 'Calibration',
+    concept: 'Sensors don\'t automatically know the truth &mdash; you check them against reality. This unit recreates the actual debugging session that happened building this extension, as the lesson itself.',
+    lessons: [
+      {
+        slug: '8.1-measure-twice',
+        title: '8.1 — Measure Twice',
+        html: `Says the ultrasonic reading, waits for the button, repeats 3 times. Pair it with a real ruler
+        or tape measure at 3 different distances and write both numbers down side by side &mdash; the same
+        surprise (they don't quite match) that came up live while building this.`
+      },
+      {
+        slug: '8.2-fix-the-sensor',
+        title: '8.2 — Fix the Sensor',
+        html: `Reports <code>distance &times; a + b</code> on a loop, with <code>a</code> (starts at 1) and
+        <code>b</code> (starts at 0) as tunable variables &mdash; right-click either variable's reporter on
+        the stage to get a slider. Using the real measurements from 8.1, adjust <code>a</code> and
+        <code>b</code> until the displayed number matches the ruler. You're deriving this extension's actual
+        calibration constants yourself.`
+      },
+      {
+        slug: '8.3-trust-but-verify',
+        title: '8.3 — Trust But Verify',
+        html: `Same measure-and-compare structure as 8.1, but for the line follower instead. Form a guess
+        about what the numbers mean over black vs. white surfaces, then test it &mdash; generalizes "verify,
+        don't assume" past just the one sensor.`
+      }
+    ]
   }
 ];
 
