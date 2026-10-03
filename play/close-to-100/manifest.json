@@ -1,0 +1,35 @@
+{
+    "name": "Close to 100",
+    "short_name": "Close to 100",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#700070",
+    "theme_color": "#700070",
+    "description": "Make two numbers from digit cards and get as close to 100 as you can.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

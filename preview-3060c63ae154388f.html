@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Preview | Rising Scholars</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<style>
+  :root {
+    --ink: #1c2a2e;
+    --ink-soft: #4a5a5e;
+    --paper: #fdfbf6;
+    --paper-alt: #f3ede1;
+    --brand: #1f6f5c;
+    --brand-dark: #175445;
+    --accent: #e8a33d;
+    --border: #e2dccd;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(253, 251, 246, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px; max-width: 1080px; margin: 0 auto;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.15rem; text-decoration: none; color: var(--ink); }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--brand), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 1rem;
+  }
+  nav.links { display: flex; gap: 28px; font-size: 0.95rem; font-weight: 500; }
+  nav.links a { text-decoration: none; color: var(--ink-soft); transition: color .15s; }
+  nav.links a:hover, nav.links a.current { color: var(--brand); }
+  .nav-cta {
+    background: var(--brand); color: #fff !important; padding: 9px 18px;
+    border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    transition: background .15s;
+  }
+  .nav-cta:hover { background: var(--brand-dark); }
+
+  .hero {
+    padding: 64px 0 48px;
+    background: radial-gradient(circle at 80% 0%, #eaf3ef 0%, var(--paper) 55%);
+  }
+  .eyebrow {
+    display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--brand-dark); background: #e2f1ec;
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
+  }
+  h1 { font-size: 2.4rem; line-height: 1.15; margin: 0 0 16px; letter-spacing: -0.01em; max-width: 20ch; }
+  h1 span { color: var(--brand); }
+  .hero p.lead { font-size: 1.08rem; color: var(--ink-soft); margin: 0; max-width: 60ch; }
+
+  section { padding: 20px 0 76px; }
+
+  .game-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  .game-card {
+    background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px; display: flex; flex-direction: column; gap: 14px;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .game-card:hover { transform: translateY(-3px); box-shadow: 0 16px 30px -20px rgba(28,42,46,0.35); }
+  .game-card-top { display: flex; align-items: flex-start; gap: 14px; }
+  .game-icon {
+    width: 52px; height: 52px; border-radius: 13px; flex-shrink: 0;
+    box-shadow: 0 4px 12px -4px rgba(28,42,46,0.35);
+  }
+  .game-name-wrap { min-width: 0; }
+  .game-card h3 { margin: 0 0 4px; font-size: 1.05rem; line-height: 1.3; }
+  .game-status {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+    padding: 3px 9px; border-radius: 999px;
+  }
+  .game-status.playable { background: #e2f1ec; color: var(--brand-dark); }
+  .game-status.soon { background: var(--paper-alt); color: var(--ink-soft); }
+  .game-card p.skill { margin: 0; color: var(--ink-soft); font-size: 0.9rem; flex-grow: 1; }
+  .game-card .play-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    text-decoration: none; font-weight: 600; font-size: 0.88rem;
+    padding: 10px 16px; border-radius: 999px; margin-top: 4px;
+  }
+  .play-btn.active { background: var(--brand); color: #fff !important; }
+  .play-btn.active:hover { background: var(--brand-dark); }
+  .play-btn.inactive {
+    background: var(--paper-alt); color: var(--ink-soft) !important;
+    cursor: default; pointer-events: none;
+  }
+
+  .status-banner {
+    display: flex; gap: 16px; align-items: flex-start; background: #fff;
+    border: 1px solid var(--border); border-left: 4px solid var(--accent);
+    border-radius: 12px; padding: 20px 22px; margin-top: 36px;
+  }
+  .status-banner .badge {
+    flex-shrink: 0; font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; background: #fdf1dd; color: #9a6a1c; padding: 5px 10px; border-radius: 999px;
+  }
+  .status-banner p { margin: 4px 0 0; color: var(--ink-soft); font-size: 0.92rem; }
+
+  footer {
+    border-top: 1px solid var(--border); padding: 34px 0; background: var(--paper-alt);
+  }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  footer p { margin: 0; font-size: 0.85rem; color: var(--ink-soft); }
+  footer .foot-links { display: flex; gap: 20px; font-size: 0.85rem; }
+  footer .foot-links a { text-decoration: none; color: var(--ink-soft); }
+  footer .foot-links a:hover { color: var(--brand); }
+
+  @media (max-width: 860px) {
+    nav.links, .nav-cta { display: none; }
+    .game-grid { grid-template-columns: 1fr 1fr; }
+    h1 { font-size: 2rem; }
+  }
+  @media (max-width: 560px) {
+    .game-grid { grid-template-columns: 1fr; }
+    section { padding: 12px 0 56px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html#top" class="brand">
+      <span class="brand-mark">RS</span>
+      Rising Scholars
+    </a>
+    <nav class="links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#programs">Programs</a>
+      <a href="games.html">Games</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a href="index.html#enroll" class="nav-cta">Join Interest List</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Private preview</span>
+      <h1>More <span>Rising Scholars</span> games.</h1>
+      <p class="lead">35 math and thinking games for grades K&ndash;5. This page is not linked from the
+        public site &mdash; share the link only with people you want to try them.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="game-grid">
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/array-capture/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Array Capture</h3>
+              <span class="game-status playable">Grades 3–4</span>
+            </div>
+          </div>
+          <p class="skill">Roll three dice, pick two, and claim that array on the board.</p>
+          <a class="play-btn active" href="play/array-capture/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/product-game/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Product Game</h3>
+              <span class="game-status playable">Grades 3–4</span>
+            </div>
+          </div>
+          <p class="skill">Move one marker, claim the product, get four in a row.</p>
+          <a class="play-btn active" href="play/product-game/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/factor-game/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Factor Game</h3>
+              <span class="game-status playable">Grades 4</span>
+            </div>
+          </div>
+          <p class="skill">Claim a number, give away its factors. Biggest total wins.</p>
+          <a class="play-btn active" href="play/factor-game/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/leftovers/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Leftovers</h3>
+              <span class="game-status playable">Grades 3–4</span>
+            </div>
+          </div>
+          <p class="skill">Share the cookies fairly and keep the remainder.</p>
+          <a class="play-btn active" href="play/leftovers/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/fact-trio/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Fact Trio</h3>
+              <span class="game-status playable">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Find the three numbers where two add up to the third.</p>
+          <a class="play-btn active" href="play/fact-trio/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/times-by-sight/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Times by Sight</h3>
+              <span class="game-status playable">Grades 2–4</span>
+            </div>
+          </div>
+          <p class="skill">Multiplication flash cards that flip to a picture of the fact.</p>
+          <a class="play-btn active" href="play/times-by-sight/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/place-value-pirates/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Place Value Pirates</h3>
+              <span class="game-status playable">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Lock each digit into hundreds, tens or ones before the next roll.</p>
+          <a class="play-btn active" href="play/place-value-pirates/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/number-line-up/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Number Line Up</h3>
+              <span class="game-status playable">Grades 1–5</span>
+            </div>
+          </div>
+          <p class="skill">Tap where the number goes on the line.</p>
+          <a class="play-btn active" href="play/number-line-up/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/mirror-me/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Mirror Me</h3>
+              <span class="game-status playable">Grades 4</span>
+            </div>
+          </div>
+          <p class="skill">Finish the picture on the other side of the mirror line.</p>
+          <a class="play-btn active" href="play/mirror-me/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/tens-in-hexes/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Tens in Hexes</h3>
+              <span class="game-status playable">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Place triangle tiles so every touching edge makes 100.</p>
+          <a class="play-btn active" href="play/tens-in-hexes/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/fraction-wall-race/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Fraction Wall Race</h3>
+              <span class="game-status playable">Grades 3–5</span>
+            </div>
+          </div>
+          <p class="skill">Roll fractions, fill your wholes exactly. First to fill both wins.</p>
+          <a class="play-btn active" href="play/fraction-wall-race/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/same-or-opposite/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Same or Opposite</h3>
+              <span class="game-status playable">Grades K–5</span>
+            </div>
+          </div>
+          <p class="skill">Cover words that mean the same, or the opposite. Four in a row wins.</p>
+          <a class="play-btn active" href="play/same-or-opposite/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/one-day/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>One Day</h3>
+              <span class="game-status playable">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Plan your day and land right on time.</p>
+          <a class="play-btn active" href="play/one-day/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/race-to-a-dollar/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Race to a Dollar</h3>
+              <span class="game-status playable">Grades 1–2</span>
+            </div>
+          </div>
+          <p class="skill">Roll, collect pennies, trade up to a dollar.</p>
+          <a class="play-btn active" href="play/race-to-a-dollar/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/close-to-100/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Close to 100</h3>
+              <span class="game-status playable">Grades 2–5</span>
+            </div>
+          </div>
+          <p class="skill">Make two numbers from digit cards and get as close to 100 as you can.</p>
+          <a class="play-btn active" href="play/close-to-100/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/guess-my-shape/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Guess My Shape</h3>
+              <span class="game-status playable">Grades K–5</span>
+            </div>
+          </div>
+          <p class="skill">Ask yes/no questions about shapes to find the secret one.</p>
+          <a class="play-btn active" href="play/guess-my-shape/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/roll-and-graph/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Roll &amp; Graph</h3>
+              <span class="game-status playable">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Roll a picture die, build a graph, answer questions about it.</p>
+          <a class="play-btn active" href="play/roll-and-graph/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/box-packer/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Box Packer</h3>
+              <span class="game-status playable">Grades 5</span>
+            </div>
+          </div>
+          <p class="skill">Pack boxes with cubes and find their volume.</p>
+          <a class="play-btn active" href="play/box-packer/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/treasure-grid/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Treasure Grid</h3>
+              <span class="game-status playable">Grades 5</span>
+            </div>
+          </div>
+          <p class="skill">Dig for buried treasure on a coordinate grid.</p>
+          <a class="play-btn active" href="play/treasure-grid/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/angle-aim/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Angle Aim</h3>
+              <span class="game-status playable">Grades 4</span>
+            </div>
+          </div>
+          <p class="skill">Estimate angles, aim the laser, then measure with a protractor.</p>
+          <a class="play-btn active" href="play/angle-aim/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/make-the-target/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Make the Target</h3>
+              <span class="game-status playable">Grades 3–5</span>
+            </div>
+          </div>
+          <p class="skill">Use four numbers and + − × ÷ to hit the target.</p>
+          <a class="play-btn active" href="play/make-the-target/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/shake-and-spill/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Shake &amp; Spill</h3>
+              <span class="game-status playable">Grades K–1</span>
+            </div>
+          </div>
+          <p class="skill">Shake the cup, spill the counters, and fill the number bond chart.</p>
+          <a class="play-btn active" href="play/shake-and-spill/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/quick-look/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Quick Look</h3>
+              <span class="game-status playable">Grades K–1</span>
+            </div>
+          </div>
+          <p class="skill">Flash a picture, then tap how many.</p>
+          <a class="play-btn active" href="play/quick-look/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/story-builder/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Story Builder</h3>
+              <span class="game-status playable">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Read the story, build the bar model, solve it.</p>
+          <a class="play-btn active" href="play/story-builder/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/function-machine/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Function Machine</h3>
+              <span class="game-status playable">Grades 2–5</span>
+            </div>
+          </div>
+          <p class="skill">Feed the machine numbers and crack its secret rule.</p>
+          <a class="play-btn active" href="play/function-machine/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/balance-it/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Balance It</h3>
+              <span class="game-status playable">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Hang weights until the beam is level.</p>
+          <a class="play-btn active" href="play/balance-it/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/estimate-and-measure/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Estimate &amp; Measure</h3>
+              <span class="game-status playable">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Estimate a length, then measure it with clips and rulers.</p>
+          <a class="play-btn active" href="play/estimate-and-measure/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/number-cages/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Number Cages</h3>
+              <span class="game-status playable">Grades 2–5</span>
+            </div>
+          </div>
+          <p class="skill">Fill the grid so every row and column works, and every cage adds up.</p>
+          <a class="play-btn active" href="play/number-cages/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/shape-puzzles/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Shape Puzzles</h3>
+              <span class="game-status playable">Grades K–2</span>
+            </div>
+          </div>
+          <p class="skill">Fill silhouettes and build hexagons from pattern blocks.</p>
+          <a class="play-btn active" href="play/shape-puzzles/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/mancala/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Mancala</h3>
+              <span class="game-status playable">Grades 2–5</span>
+            </div>
+          </div>
+          <p class="skill">Sow stones, fill your store. Avalanche and Classic rules.</p>
+          <a class="play-btn active" href="play/mancala/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/wall-rush/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>WallRush</h3>
+              <span class="game-status playable">Grades 3–5</span>
+            </div>
+          </div>
+          <p class="skill">Race your ball to the top; your color walls let you through, the other color stops you cold.</p>
+          <a class="play-btn active" href="play/wall-rush/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/sum-blocks/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Sum Blocks</h3>
+              <span class="game-status playable">Grades 2–4</span>
+            </div>
+          </div>
+          <p class="skill">Drag number blocks into overlapping boxes so every box hits its target.</p>
+          <a class="play-btn active" href="play/sum-blocks/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/sushi-subtraction/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Sushi Subtraction</h3>
+              <span class="game-status playable">Grades 2</span>
+            </div>
+          </div>
+          <p class="skill">Feed a sushi-belt monster by building subtraction chains from numbered plates.</p>
+          <a class="play-btn active" href="play/sushi-subtraction/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/subtraction-drill/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Subtraction Drill</h3>
+              <span class="game-status playable">Grades 2</span>
+            </div>
+          </div>
+          <p class="skill">Practice subtraction with a cute googly monster.</p>
+          <a class="play-btn active" href="play/subtraction-drill/index.html">Play in browser →</a>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="play/fraction-pizza-shop/icons/Icon-192.png" alt="" loading="lazy">
+            <div class="game-name-wrap">
+              <h3>Fraction Pizza Shop</h3>
+              <span class="game-status playable">Grades 3–4</span>
+            </div>
+          </div>
+          <p class="skill">Cut, top and serve pizzas to order.</p>
+          <a class="play-btn active" href="play/fraction-pizza-shop/index.html">Play in browser →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Rising Scholars LLC. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
