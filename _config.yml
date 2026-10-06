@@ -1,0 +1,5 @@
+# GitHub Pages (Jekyll) config. _archive/ holds retired pages (the old after-school
+# program site) that are kept in git but must not be served.
+exclude:
+  - _archive
+  - README.md

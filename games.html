@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Games | Rising Scholars</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Original logic, strategy and math games built for Rising Scholars' STEM enrichment block — try one free in your browser, no download needed.">
+<meta name="description" content="Original logic, strategy and math games built by Rising Scholars for K-5 math learning — try one free in your browser, no download needed.">
 <style>
   :root {
-    --ink: #1c2a2e;
-    --ink-soft: #4a5a5e;
-    --paper: #fdfbf6;
-    --paper-alt: #f3ede1;
-    --brand: #1f6f5c;
-    --brand-dark: #175445;
-    --accent: #e8a33d;
-    --border: #e2dccd;
-    --radius: 14px;
+    --ink: #0c2b2b;
+    --ink-soft: #40605f;
+    --paper: #fffdf5;
+    --paper-alt: #fff3d4;
+    --brand: #0a8f7a;
+    --brand-dark: #066f5f;
+    --accent: #ffb000;
+    --border: #f0e3bd;
+    --radius: 16px;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -32,7 +32,7 @@
 
   header {
     position: sticky; top: 0; z-index: 20;
-    background: rgba(253, 251, 246, 0.92);
+    background: rgba(255, 253, 245, 0.92);
     backdrop-filter: blur(6px);
     border-bottom: 1px solid var(--border);
   }
@@ -137,6 +137,43 @@
     .game-grid { grid-template-columns: 1fr; }
     section { padding: 12px 0 56px; }
   }
+
+  /* palette C */
+  .brand-mark { background: linear-gradient(135deg, #0a8f7a, #ffb000); }
+  .nav-cta { background: #ffb000; color: #3a2a00 !important; }
+  .nav-cta:hover { background: #e69f00; }
+  .hero { background: linear-gradient(135deg, #0a8f7a 0%, #0b6e72 100%); }
+  .hero h1 { color: #fff; max-width: 22ch; }
+  .hero h1 span { color: #ffd24d; }
+  .hero p.lead { color: #e6faf6; }
+  .hero .eyebrow { background: rgba(255,255,255,.18); color: #fff; }
+  .jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .jump a { text-decoration: none; background: rgba(255,255,255,.16); color: #fff; font-weight: 600; font-size: .88rem; padding: 8px 16px; border-radius: 999px; }
+  .jump a:hover { background: rgba(255,255,255,.3); }
+  .grade-block.featured:nth-child(n) .grade-head { border-left-color: var(--accent); }
+  .grade-block.featured .game-card { border-top-color: var(--accent); box-shadow: 0 10px 30px -18px rgba(255,176,0,.7); }
+  .grade-block { padding-top: 44px; scroll-margin-top: 70px; }
+  .grade-head { margin-bottom: 20px; border-left: 5px solid var(--accent); padding-left: 16px; }
+  .grade-block:nth-child(odd) .grade-head { border-left-color: var(--brand); }
+  .grade-head h2 { margin: 0 0 2px; font-size: 1.6rem; letter-spacing: -0.01em; }
+  .grade-head p { margin: 0; color: var(--ink-soft); }
+  .grade-pill { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; background: #e0f5f0; color: var(--brand-dark); padding: 3px 9px; border-radius: 999px; }
+  .game-card { border-top: 4px solid var(--brand); }
+  .game-card:nth-child(even) { border-top-color: var(--accent); }
+  .game-card.is-locked .game-icon { filter: grayscale(.35); opacity: .8; }
+  .game-status.locked { background: #f2eee0; color: var(--ink-soft); align-self: flex-start; }
+  .game-status.playable { background: #e0f5f0; align-self: flex-start; }
+  .play-btn.inactive { background: #f2eee0; color: var(--ink-soft) !important; }
+  .play-btn.active { background: var(--brand); }
+  .store-row { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 12px; border-top: 1px dashed var(--border); }
+  .store-badge { font-size: .74rem; font-weight: 700; color: var(--ink-soft); background: #fff; border: 1.5px dashed #d8c98f; border-radius: 10px; padding: 6px 10px; line-height: 1.25; }
+  .store-badge em { display: block; font-style: normal; font-weight: 600; color: #9a7400; font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; }
+  .status-banner { border-left-color: var(--accent); background: #fff; }
+  .status-banner .badge { background: #fff1c9; color: #7a5a00; }
+  footer { background: #0c3b3a; border-top: none; }
+  footer p, footer .foot-links a { color: #bfe3dd; }
+  footer .foot-links a:hover { color: #fff; }
+  .game-card .play-btn svg, .game-status svg { flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -149,11 +186,11 @@
     </a>
     <nav class="links">
       <a href="index.html#about">About</a>
-      <a href="index.html#programs">Programs</a>
+      <a href="index.html#programs">Tutoring</a>
       <a href="games.html" class="current">Games</a>
       <a href="index.html#contact">Contact</a>
     </nav>
-    <a href="index.html#enroll" class="nav-cta">Join Interest List</a>
+    <a href="index.html#enroll" class="nav-cta">Free Meet &amp; Greet</a>
   </div>
 </header>
 
@@ -161,561 +198,753 @@
 
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">STEM &amp; Hands-On Projects</span>
-      <h1>The games your kid will actually play in our <span>STEM block</span>.</h1>
-      <p class="lead">Forty-four original logic, strategy and math games, built in-house for the kind of thinking we want kids
-        practicing every afternoon — planning ahead, spotting patterns, and reasoning through a problem instead of
-        guessing. Try one free below, right in your browser.</p>
+      <span class="eyebrow">Math Games &middot; Grades K&ndash;5</span>
+      <h1>Math practice that feels like <span>play</span>.</h1>
+      <p class="lead">Forty-four original math and logic games I built so kids practice number sense, fractions, strategy and
+        reasoning without it feeling like homework. Browse by grade below. iOS and Android apps are coming soon, and the web
+        demos are being unlocked a couple at a time.</p>
+      <div class="jump"><a href="#free-week">Free this week</a><a href="#k1">Kindergarten &amp; Grade 1</a><a href="#g23">Grades 2&ndash;3</a><a href="#g45">Grades 4&ndash;5</a><a href="#all">Strategy &amp; Logic</a></div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
+    <div class="grade-block featured" id="free-week">
+      <div class="grade-head"><h2>Free trial games this week</h2><p>This week's picks. Play them free in your browser, no sign-up needed.</p></div>
       <div class="game-grid">
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/three-mens-morris.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Three Men's Morris</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">A 3,000-year-old game of placing and sliding stones to line up three in a row — spatial
-            reasoning and planning two moves ahead.</p>
-          <a class="play-btn active" href="play/three-mens-morris/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/nine-mens-morris.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Nine Men's Morris</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">The bigger, deeper sibling of Three Men's Morris — more pieces, more lines, and real
-            multi-step strategic planning.</p>
-          <a class="play-btn active" href="play/nine-mens-morris/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/connect-four.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Connect Four</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">The classic — drop discs, spot the threat before it lands, and think a few moves past
-            your opponent's next move.</p>
-          <a class="play-btn active" href="play/connect-four/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/dots-and-boxes.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Dots &amp; Boxes</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">A pencil-and-paper classic — every line you draw is a small trade-off, and counting
-            ahead keeps you from handing your opponent a free box.</p>
-          <a class="play-btn active" href="play/dots-and-boxes/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/shift-tac-toe.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Shift Tac Toe</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Tic-tac-toe with a twist — the board itself shifts, so kids have to keep re-reading the
-            grid instead of memorizing one plan.</p>
-          <a class="play-btn active" href="play/shift-tac-toe/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/battleship.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Battleship</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Coordinate grids and process of elimination — every shot is a hypothesis, every hit or
-            miss narrows down where to look next.</p>
-          <a class="play-btn active" href="play/battleship/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/music-masters.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Music Masters</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">A rhythm and pattern-memory game — listen, repeat, and hold a growing sequence in your
-            head as it gets longer.</p>
-          <a class="play-btn active" href="play/music-masters/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/code-rover.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Code Rover</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Drag-and-drop programming blocks to steer a rover through a maze — an honest first taste
-            of sequencing, loops, and conditionals.</p>
-          <a class="play-btn active" href="play/code-rover/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/nim.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Nim</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">An ancient counting game that's secretly about binary numbers — kids learn to see piles
-            of stones as powers of two without ever calling it math.</p>
-          <a class="play-btn active" href="play/nim/index.html">Play in browser →</a>
-        </div>
-
         <div class="game-card">
           <div class="game-card-top">
             <img class="game-icon" src="assets/icons/array-capture.png" alt="">
             <div class="game-name-wrap">
               <h3>Array Capture</h3>
-              <span class="game-status playable">Play now</span>
+              <span class="grade-pill">Grades 3–4</span>
             </div>
           </div>
-          <p class="skill">Grades 3–4 &middot; Roll three dice, pick two, and claim that array on the board.</p>
-          <a class="play-btn active" href="play/array-capture/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/product-game.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Product Game</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
+          <p class="skill">Roll three dice, pick two, and claim that array on the board.</p>
+          <a class="play-btn active" href="play/array-capture/index.html">Play free in browser &rarr;</a>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
           </div>
-          <p class="skill">Grades 3–4 &middot; Move one marker, claim the product, get four in a row.</p>
-          <a class="play-btn active" href="play/product-game/index.html">Play in browser →</a>
         </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/factor-game.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Factor Game</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 4 &middot; Claim a number, give away its factors. Biggest total wins.</p>
-          <a class="play-btn active" href="play/factor-game/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/leftovers.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Leftovers</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 3–4 &middot; Share the cookies fairly and keep the remainder.</p>
-          <a class="play-btn active" href="play/leftovers/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/fact-trio.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Fact Trio</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 1–3 &middot; Find the three numbers where two add up to the third.</p>
-          <a class="play-btn active" href="play/fact-trio/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/times-by-sight.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Times by Sight</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 2–4 &middot; Multiplication flash cards that flip to a picture of the fact.</p>
-          <a class="play-btn active" href="play/times-by-sight/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/place-value-pirates.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Place Value Pirates</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 1–3 &middot; Lock each digit into hundreds, tens or ones before the next roll.</p>
-          <a class="play-btn active" href="play/place-value-pirates/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/number-line-up.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Number Line Up</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 1–5 &middot; Tap where the number goes on the line.</p>
-          <a class="play-btn active" href="play/number-line-up/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/mirror-me.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Mirror Me</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 4 &middot; Finish the picture on the other side of the mirror line.</p>
-          <a class="play-btn active" href="play/mirror-me/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/tens-in-hexes.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Tens in Hexes</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 1–3 &middot; Place triangle tiles so every touching edge makes 100.</p>
-          <a class="play-btn active" href="play/tens-in-hexes/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/fraction-wall-race.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Fraction Wall Race</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 3–5 &middot; Roll fractions, fill your wholes exactly. First to fill both wins.</p>
-          <a class="play-btn active" href="play/fraction-wall-race/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/same-or-opposite.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Same or Opposite</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades K–5 &middot; Cover words that mean the same, or the opposite. Four in a row wins.</p>
-          <a class="play-btn active" href="play/same-or-opposite/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/one-day.png" alt="">
-            <div class="game-name-wrap">
-              <h3>One Day</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 1–3 &middot; Plan your day and land right on time.</p>
-          <a class="play-btn active" href="play/one-day/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/race-to-a-dollar.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Race to a Dollar</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 1–2 &middot; Roll, collect pennies, trade up to a dollar.</p>
-          <a class="play-btn active" href="play/race-to-a-dollar/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/close-to-100.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Close to 100</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 2–5 &middot; Make two numbers from digit cards and get as close to 100 as you can.</p>
-          <a class="play-btn active" href="play/close-to-100/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/guess-my-shape.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Guess My Shape</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades K–5 &middot; Ask yes/no questions about shapes to find the secret one.</p>
-          <a class="play-btn active" href="play/guess-my-shape/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/roll-and-graph.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Roll &amp; Graph</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 1–3 &middot; Roll a picture die, build a graph, answer questions about it.</p>
-          <a class="play-btn active" href="play/roll-and-graph/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/box-packer.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Box Packer</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 5 &middot; Pack boxes with cubes and find their volume.</p>
-          <a class="play-btn active" href="play/box-packer/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/treasure-grid.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Treasure Grid</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 5 &middot; Dig for buried treasure on a coordinate grid.</p>
-          <a class="play-btn active" href="play/treasure-grid/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/angle-aim.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Angle Aim</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 4 &middot; Estimate angles, aim the laser, then measure with a protractor.</p>
-          <a class="play-btn active" href="play/angle-aim/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/make-the-target.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Make the Target</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 3–5 &middot; Use four numbers and + − × ÷ to hit the target.</p>
-          <a class="play-btn active" href="play/make-the-target/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/shake-and-spill.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Shake &amp; Spill</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades K–1 &middot; Shake the cup, spill the counters, and fill the number bond chart.</p>
-          <a class="play-btn active" href="play/shake-and-spill/index.html">Play in browser →</a>
-        </div>
-
         <div class="game-card">
           <div class="game-card-top">
             <img class="game-icon" src="assets/icons/quick-look.png" alt="">
             <div class="game-name-wrap">
               <h3>Quick Look</h3>
-              <span class="game-status playable">Play now</span>
+              <span class="grade-pill">Grades K–1</span>
             </div>
           </div>
-          <p class="skill">Grades K–1 &middot; Flash a picture, then tap how many.</p>
-          <a class="play-btn active" href="play/quick-look/index.html">Play in browser →</a>
+          <p class="skill">Flash a picture, then tap how many.</p>
+          <a class="play-btn active" href="play/quick-look/index.html">Play free in browser &rarr;</a>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
         </div>
-
         <div class="game-card">
           <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/story-builder.png" alt="">
+            <img class="game-icon" src="assets/icons/dots-and-boxes.png" alt="">
             <div class="game-name-wrap">
-              <h3>Story Builder</h3>
-              <span class="game-status playable">Play now</span>
+              <h3>Dots &amp; Boxes</h3>
+              <span class="grade-pill">All grades</span>
             </div>
           </div>
-          <p class="skill">Grades 1–3 &middot; Read the story, build the bar model, solve it.</p>
-          <a class="play-btn active" href="play/story-builder/index.html">Play in browser →</a>
+          <p class="skill">A pencil-and-paper classic — every line you draw is a small trade-off, and counting ahead keeps you from handing your opponent a free box.</p>
+          <a class="play-btn active" href="play/dots-and-boxes/index.html">Play free in browser &rarr;</a>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
         </div>
-
+      </div>
+    </div>
+    <div class="grade-block" id="k1">
+      <div class="grade-head"><h2>Kindergarten &amp; Grade 1</h2><p>Counting, number bonds, shapes and first sums.</p></div>
+      <div class="game-grid">
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/shake-and-spill.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Shake &amp; Spill</h3>
+              <span class="grade-pill">Grades K–1</span>
+            </div>
+          </div>
+          <p class="skill">Shake the cup, spill the counters, and fill the number bond chart.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
         <div class="game-card">
           <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/function-machine.png" alt="">
+            <img class="game-icon" src="assets/icons/quick-look.png" alt="">
             <div class="game-name-wrap">
-              <h3>Function Machine</h3>
-              <span class="game-status playable">Play now</span>
+              <h3>Quick Look</h3>
+              <span class="grade-pill">Grades K–1</span>
             </div>
           </div>
-          <p class="skill">Grades 2–5 &middot; Feed the machine numbers and crack its secret rule.</p>
-          <a class="play-btn active" href="play/function-machine/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/balance-it.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Balance It</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
+          <p class="skill">Flash a picture, then tap how many.</p>
+          <a class="play-btn active" href="play/quick-look/index.html">Play free in browser &rarr;</a>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
           </div>
-          <p class="skill">Grades 1–3 &middot; Hang weights until the beam is level.</p>
-          <a class="play-btn active" href="play/balance-it/index.html">Play in browser →</a>
         </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/estimate-and-measure.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Estimate &amp; Measure</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 1–3 &middot; Estimate a length, then measure it with clips and rulers.</p>
-          <a class="play-btn active" href="play/estimate-and-measure/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/number-cages.png" alt="">
-            <div class="game-name-wrap">
-              <h3>Number Cages</h3>
-              <span class="game-status playable">Play now</span>
-            </div>
-          </div>
-          <p class="skill">Grades 2–5 &middot; Fill the grid so every row and column works, and every cage adds up.</p>
-          <a class="play-btn active" href="play/number-cages/index.html">Play in browser →</a>
-        </div>
-
-        <div class="game-card">
+        <div class="game-card is-locked">
           <div class="game-card-top">
             <img class="game-icon" src="assets/icons/shape-puzzles.png" alt="">
             <div class="game-name-wrap">
               <h3>Shape Puzzles</h3>
-              <span class="game-status playable">Play now</span>
+              <span class="grade-pill">Grades K–2</span>
             </div>
           </div>
-          <p class="skill">Grades K–2 &middot; Fill silhouettes and build hexagons from pattern blocks.</p>
-          <a class="play-btn active" href="play/shape-puzzles/index.html">Play in browser →</a>
+          <p class="skill">Fill silhouettes and build hexagons from pattern blocks.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
         </div>
-
-        <div class="game-card">
+      </div>
+    </div>
+    <div class="grade-block" id="g23">
+      <div class="grade-head"><h2>Grades 2&ndash;3</h2><p>Place value, fact fluency, early multiplication and measurement.</p></div>
+      <div class="game-grid">
+        <div class="game-card is-locked">
           <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/mancala.png" alt="">
+            <img class="game-icon" src="assets/icons/fact-trio.png" alt="">
             <div class="game-name-wrap">
-              <h3>Mancala</h3>
-              <span class="game-status playable">Play now</span>
+              <h3>Fact Trio</h3>
+              <span class="grade-pill">Grades 1–3</span>
             </div>
           </div>
-          <p class="skill">Grades 2–5 &middot; Sow stones, fill your store. Avalanche and Classic rules.</p>
-          <a class="play-btn active" href="play/mancala/index.html">Play in browser →</a>
+          <p class="skill">Find the three numbers where two add up to the third.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
         </div>
-
-        <div class="game-card">
+        <div class="game-card is-locked">
           <div class="game-card-top">
-            <img class="game-icon" src="assets/icons/wall-rush.png" alt="">
+            <img class="game-icon" src="assets/icons/times-by-sight.png" alt="">
             <div class="game-name-wrap">
-              <h3>WallRush</h3>
-              <span class="game-status playable">Play now</span>
+              <h3>Times by Sight</h3>
+              <span class="grade-pill">Grades 2–4</span>
             </div>
           </div>
-          <p class="skill">Grades 3–5 &middot; Race your ball to the top; your color walls let you through, the other color stops you cold.</p>
-          <a class="play-btn active" href="play/wall-rush/index.html">Play in browser →</a>
+          <p class="skill">Multiplication flash cards that flip to a picture of the fact.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
         </div>
-
-        <div class="game-card">
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/place-value-pirates.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Place Value Pirates</h3>
+              <span class="grade-pill">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Lock each digit into hundreds, tens or ones before the next roll.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/tens-in-hexes.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Tens in Hexes</h3>
+              <span class="grade-pill">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Place triangle tiles so every touching edge makes 100.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/one-day.png" alt="">
+            <div class="game-name-wrap">
+              <h3>One Day</h3>
+              <span class="grade-pill">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Plan your day and land right on time.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/race-to-a-dollar.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Race to a Dollar</h3>
+              <span class="grade-pill">Grades 1–2</span>
+            </div>
+          </div>
+          <p class="skill">Roll, collect pennies, trade up to a dollar.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/roll-and-graph.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Roll &amp; Graph</h3>
+              <span class="grade-pill">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Roll a picture die, build a graph, answer questions about it.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/story-builder.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Story Builder</h3>
+              <span class="grade-pill">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Read the story, build the bar model, solve it.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/balance-it.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Balance It</h3>
+              <span class="grade-pill">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Hang weights until the beam is level.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/estimate-and-measure.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Estimate &amp; Measure</h3>
+              <span class="grade-pill">Grades 1–3</span>
+            </div>
+          </div>
+          <p class="skill">Estimate a length, then measure it with clips and rulers.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
           <div class="game-card-top">
             <img class="game-icon" src="assets/icons/sum-blocks.png" alt="">
             <div class="game-name-wrap">
               <h3>Sum Blocks</h3>
-              <span class="game-status playable">Play now</span>
+              <span class="grade-pill">Grades 2–4</span>
             </div>
           </div>
-          <p class="skill">Grades 2–4 &middot; Drag number blocks into overlapping boxes so every box hits its target.</p>
-          <a class="play-btn active" href="play/sum-blocks/index.html">Play in browser →</a>
+          <p class="skill">Drag number blocks into overlapping boxes so every box hits its target.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
         </div>
-
-        <div class="game-card">
+        <div class="game-card is-locked">
           <div class="game-card-top">
             <img class="game-icon" src="assets/icons/sushi-subtraction.png" alt="">
             <div class="game-name-wrap">
               <h3>Sushi Subtraction</h3>
-              <span class="game-status playable">Play now</span>
+              <span class="grade-pill">Grades 2</span>
             </div>
           </div>
-          <p class="skill">Grades 2 &middot; Feed a sushi-belt monster by building subtraction chains from numbered plates.</p>
-          <a class="play-btn active" href="play/sushi-subtraction/index.html">Play in browser →</a>
+          <p class="skill">Feed a sushi-belt monster by building subtraction chains from numbered plates.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
         </div>
-
-        <div class="game-card">
+        <div class="game-card is-locked">
           <div class="game-card-top">
             <img class="game-icon" src="assets/icons/subtraction-drill.png" alt="">
             <div class="game-name-wrap">
               <h3>Subtraction Drill</h3>
-              <span class="game-status playable">Play now</span>
+              <span class="grade-pill">Grades 2</span>
             </div>
           </div>
-          <p class="skill">Grades 2 &middot; Practice subtraction with a cute googly monster.</p>
-          <a class="play-btn active" href="play/subtraction-drill/index.html">Play in browser →</a>
+          <p class="skill">Practice subtraction with a cute googly monster.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
         </div>
-
+      </div>
+    </div>
+    <div class="grade-block" id="g45">
+      <div class="grade-head"><h2>Grades 4&ndash;5</h2><p>Fractions, multiplication strategy, area, volume and coordinates.</p></div>
+      <div class="game-grid">
         <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/array-capture.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Array Capture</h3>
+              <span class="grade-pill">Grades 3–4</span>
+            </div>
+          </div>
+          <p class="skill">Roll three dice, pick two, and claim that array on the board.</p>
+          <a class="play-btn active" href="play/array-capture/index.html">Play free in browser &rarr;</a>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/product-game.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Product Game</h3>
+              <span class="grade-pill">Grades 3–4</span>
+            </div>
+          </div>
+          <p class="skill">Move one marker, claim the product, get four in a row.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/factor-game.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Factor Game</h3>
+              <span class="grade-pill">Grades 4</span>
+            </div>
+          </div>
+          <p class="skill">Claim a number, give away its factors. Biggest total wins.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/leftovers.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Leftovers</h3>
+              <span class="grade-pill">Grades 3–4</span>
+            </div>
+          </div>
+          <p class="skill">Share the cookies fairly and keep the remainder.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/mirror-me.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Mirror Me</h3>
+              <span class="grade-pill">Grades 4</span>
+            </div>
+          </div>
+          <p class="skill">Finish the picture on the other side of the mirror line.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/fraction-wall-race.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Fraction Wall Race</h3>
+              <span class="grade-pill">Grades 3–5</span>
+            </div>
+          </div>
+          <p class="skill">Roll fractions, fill your wholes exactly. First to fill both wins.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/close-to-100.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Close to 100</h3>
+              <span class="grade-pill">Grades 2–5</span>
+            </div>
+          </div>
+          <p class="skill">Make two numbers from digit cards and get as close to 100 as you can.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/box-packer.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Box Packer</h3>
+              <span class="grade-pill">Grades 5</span>
+            </div>
+          </div>
+          <p class="skill">Pack boxes with cubes and find their volume.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/treasure-grid.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Treasure Grid</h3>
+              <span class="grade-pill">Grades 5</span>
+            </div>
+          </div>
+          <p class="skill">Dig for buried treasure on a coordinate grid.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/angle-aim.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Angle Aim</h3>
+              <span class="grade-pill">Grades 4</span>
+            </div>
+          </div>
+          <p class="skill">Estimate angles, aim the laser, then measure with a protractor.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/make-the-target.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Make the Target</h3>
+              <span class="grade-pill">Grades 3–5</span>
+            </div>
+          </div>
+          <p class="skill">Use four numbers and + − × ÷ to hit the target.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/function-machine.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Function Machine</h3>
+              <span class="grade-pill">Grades 2–5</span>
+            </div>
+          </div>
+          <p class="skill">Feed the machine numbers and crack its secret rule.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/number-cages.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Number Cages</h3>
+              <span class="grade-pill">Grades 2–5</span>
+            </div>
+          </div>
+          <p class="skill">Fill the grid so every row and column works, and every cage adds up.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/mancala.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Mancala</h3>
+              <span class="grade-pill">Grades 2–5</span>
+            </div>
+          </div>
+          <p class="skill">Sow stones, fill your store. Avalanche and Classic rules.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/wall-rush.png" alt="">
+            <div class="game-name-wrap">
+              <h3>WallRush</h3>
+              <span class="grade-pill">Grades 3–5</span>
+            </div>
+          </div>
+          <p class="skill">Race your ball to the top; your color walls let you through, the other color stops you cold.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
           <div class="game-card-top">
             <img class="game-icon" src="assets/icons/fraction-pizza-shop.png" alt="">
             <div class="game-name-wrap">
               <h3>Fraction Pizza Shop</h3>
-              <span class="game-status playable">Play now</span>
+              <span class="grade-pill">Grades 3–4</span>
             </div>
           </div>
-          <p class="skill">Grades 3–4 &middot; Cut, top and serve pizzas to order.</p>
-          <a class="play-btn active" href="play/fraction-pizza-shop/index.html">Play in browser →</a>
+          <p class="skill">Cut, top and serve pizzas to order.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
         </div>
-
       </div>
+    </div>
+    <div class="grade-block" id="all">
+      <div class="grade-head"><h2>Strategy &amp; Logic &middot; All Grades</h2><p>Strategy classics and puzzles that work at any age.</p></div>
+      <div class="game-grid">
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/three-mens-morris.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Three Men's Morris</h3>
+              <span class="grade-pill">All grades</span>
+            </div>
+          </div>
+          <p class="skill">A 3,000-year-old game of placing and sliding stones to line up three in a row — spatial reasoning and planning two moves ahead.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/nine-mens-morris.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Nine Men's Morris</h3>
+              <span class="grade-pill">All grades</span>
+            </div>
+          </div>
+          <p class="skill">The bigger, deeper sibling of Three Men's Morris — more pieces, more lines, and real multi-step strategic planning.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/connect-four.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Connect Four</h3>
+              <span class="grade-pill">All grades</span>
+            </div>
+          </div>
+          <p class="skill">The classic — drop discs, spot the threat before it lands, and think a few moves past your opponent's next move.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/dots-and-boxes.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Dots &amp; Boxes</h3>
+              <span class="grade-pill">All grades</span>
+            </div>
+          </div>
+          <p class="skill">A pencil-and-paper classic — every line you draw is a small trade-off, and counting ahead keeps you from handing your opponent a free box.</p>
+          <a class="play-btn active" href="play/dots-and-boxes/index.html">Play free in browser &rarr;</a>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/shift-tac-toe.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Shift Tac Toe</h3>
+              <span class="grade-pill">All grades</span>
+            </div>
+          </div>
+          <p class="skill">Tic-tac-toe with a twist — the board itself shifts, so kids have to keep re-reading the grid instead of memorizing one plan.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/battleship.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Battleship</h3>
+              <span class="grade-pill">All grades</span>
+            </div>
+          </div>
+          <p class="skill">Coordinate grids and process of elimination — every shot is a hypothesis, every hit or miss narrows down where to look next.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/music-masters.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Music Masters</h3>
+              <span class="grade-pill">All grades</span>
+            </div>
+          </div>
+          <p class="skill">A rhythm and pattern-memory game — listen, repeat, and hold a growing sequence in your head as it gets longer.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/code-rover.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Code Rover</h3>
+              <span class="grade-pill">All grades</span>
+            </div>
+          </div>
+          <p class="skill">Drag-and-drop programming blocks to steer a rover through a maze — an honest first taste of sequencing, loops, and conditionals.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/nim.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Nim</h3>
+              <span class="grade-pill">All grades</span>
+            </div>
+          </div>
+          <p class="skill">An ancient counting game that's secretly about binary numbers — kids learn to see piles of stones as powers of two without ever calling it math.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/number-line-up.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Number Line Up</h3>
+              <span class="grade-pill">Grades 1–5</span>
+            </div>
+          </div>
+          <p class="skill">Tap where the number goes on the line.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/same-or-opposite.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Same or Opposite</h3>
+              <span class="grade-pill">Grades K–5</span>
+            </div>
+          </div>
+          <p class="skill">Cover words that mean the same, or the opposite. Four in a row wins.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+        <div class="game-card is-locked">
+          <div class="game-card-top">
+            <img class="game-icon" src="assets/icons/guess-my-shape.png" alt="">
+            <div class="game-name-wrap">
+              <h3>Guess My Shape</h3>
+              <span class="grade-pill">Grades K–5</span>
+            </div>
+          </div>
+          <p class="skill">Ask yes/no questions about shapes to find the secret one.</p>
+          <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
+          <div class="store-row">
+            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+          </div>
+        </div>
+      </div>
+    </div>
 
       <div class="status-banner">
-        <span class="badge">Launch status</span>
-        <p><strong>All forty-four games are playable free right in your browser — no download needed.</strong> An Android
-          app is on the way too; join the interest list to hear the moment it's ready.</p>
+        <span class="badge">Coming soon</span>
+        <p><strong>Every game will be its own app on the App Store and Google Play.</strong> Want to hear when they launch?
+          Want web access to one of the locked games, or have a subject you'd like turned into a game? Email
+          <a href="mailto:admin@therisingscholars.com">admin@therisingscholars.com</a> and I'll get back to you.</p>
       </div>
     </div>
   </section>
@@ -726,8 +955,8 @@
   <div class="wrap">
     <p>&copy; 2026 Rising Scholars LLC. All rights reserved.</p>
     <div class="foot-links">
+      <a href="index.html#programs">Tutoring</a>
       <a href="index.html#about">About</a>
-      <a href="index.html#programs">Programs</a>
       <a href="games.html">Games</a>
       <a href="index.html#contact">Contact</a>
     </div>
