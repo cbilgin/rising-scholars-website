@@ -166,7 +166,9 @@
   .play-btn.inactive { background: #f2eee0; color: var(--ink-soft) !important; }
   .play-btn.active { background: var(--brand); }
   .store-row { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 12px; border-top: 1px dashed var(--border); }
-  .store-badge { font-size: .74rem; font-weight: 700; color: var(--ink-soft); background: #fff; border: 1.5px dashed #d8c98f; border-radius: 10px; padding: 6px 10px; line-height: 1.25; }
+  .store-badge { display: inline-flex; align-items: center; gap: 8px;
+    font-size: .74rem; font-weight: 700; color: var(--ink-soft); background: #fff; border: 1.5px dashed #d8c98f; border-radius: 10px; padding: 6px 10px; line-height: 1.25; }
+  .store-ico { width: 22px; height: 22px; flex-shrink: 0; }
   .store-badge em { display: block; font-style: normal; font-weight: 600; color: #9a7400; font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; }
   .status-banner { border-left-color: var(--accent); background: #fff; }
   .status-banner .badge { background: #fff1c9; color: #7a5a00; }
@@ -177,6 +179,22 @@
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="as-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1fc2ff"/><stop offset="1" stop-color="#1668f0"/></linearGradient>
+  </defs>
+  <symbol id="ico-appstore" viewBox="0 0 24 24">
+    <rect width="24" height="24" rx="5.5" fill="url(#as-grad)"/>
+    <path d="M7.4 17.6 L12 6.4 L16.6 17.6 M9.4 13.9 H14.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ico-play" viewBox="0 0 24 24">
+    <path d="M4 2 L14 12 L4 22 Z" fill="#00c3ff"/>
+    <path d="M4 2 L16.75 9.5 L14 12 Z" fill="#00e676"/>
+    <path d="M16.75 9.5 L21 12 L16.75 14.5 L14 12 Z" fill="#ffd500"/>
+    <path d="M14 12 L16.75 14.5 L4 22 Z" fill="#ff3d4a"/>
+  </symbol>
+</svg>
 
 <header>
   <div class="nav">
@@ -223,8 +241,8 @@
           <p class="skill">Roll three dice, pick two, and claim that array on the board.</p>
           <a class="play-btn active" href="play/array-capture/index.html">Play free in browser &rarr;</a>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card">
@@ -238,8 +256,8 @@
           <p class="skill">Flash a picture, then tap how many.</p>
           <a class="play-btn active" href="play/quick-look/index.html">Play free in browser &rarr;</a>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card">
@@ -253,8 +271,8 @@
           <p class="skill">A pencil-and-paper classic — every line you draw is a small trade-off, and counting ahead keeps you from handing your opponent a free box.</p>
           <a class="play-btn active" href="play/dots-and-boxes/index.html">Play free in browser &rarr;</a>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
       </div>
@@ -273,8 +291,8 @@
           <p class="skill">Shake the cup, spill the counters, and fill the number bond chart.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card">
@@ -288,8 +306,8 @@
           <p class="skill">Flash a picture, then tap how many.</p>
           <a class="play-btn active" href="play/quick-look/index.html">Play free in browser &rarr;</a>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -303,8 +321,8 @@
           <p class="skill">Fill silhouettes and build hexagons from pattern blocks.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
       </div>
@@ -323,8 +341,8 @@
           <p class="skill">Find the three numbers where two add up to the third.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -338,8 +356,8 @@
           <p class="skill">Multiplication flash cards that flip to a picture of the fact.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -353,8 +371,8 @@
           <p class="skill">Lock each digit into hundreds, tens or ones before the next roll.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -368,8 +386,8 @@
           <p class="skill">Place triangle tiles so every touching edge makes 100.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -383,8 +401,8 @@
           <p class="skill">Plan your day and land right on time.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -398,8 +416,8 @@
           <p class="skill">Roll, collect pennies, trade up to a dollar.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -413,8 +431,8 @@
           <p class="skill">Roll a picture die, build a graph, answer questions about it.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -428,8 +446,8 @@
           <p class="skill">Read the story, build the bar model, solve it.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -443,8 +461,8 @@
           <p class="skill">Hang weights until the beam is level.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -458,8 +476,8 @@
           <p class="skill">Estimate a length, then measure it with clips and rulers.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -473,8 +491,8 @@
           <p class="skill">Drag number blocks into overlapping boxes so every box hits its target.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -488,8 +506,8 @@
           <p class="skill">Feed a sushi-belt monster by building subtraction chains from numbered plates.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -503,8 +521,8 @@
           <p class="skill">Practice subtraction with a cute googly monster.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
       </div>
@@ -523,8 +541,8 @@
           <p class="skill">Roll three dice, pick two, and claim that array on the board.</p>
           <a class="play-btn active" href="play/array-capture/index.html">Play free in browser &rarr;</a>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -538,8 +556,8 @@
           <p class="skill">Move one marker, claim the product, get four in a row.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -553,8 +571,8 @@
           <p class="skill">Claim a number, give away its factors. Biggest total wins.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -568,8 +586,8 @@
           <p class="skill">Share the cookies fairly and keep the remainder.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -583,8 +601,8 @@
           <p class="skill">Finish the picture on the other side of the mirror line.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -598,8 +616,8 @@
           <p class="skill">Roll fractions, fill your wholes exactly. First to fill both wins.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -613,8 +631,8 @@
           <p class="skill">Make two numbers from digit cards and get as close to 100 as you can.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -628,8 +646,8 @@
           <p class="skill">Pack boxes with cubes and find their volume.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -643,8 +661,8 @@
           <p class="skill">Dig for buried treasure on a coordinate grid.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -658,8 +676,8 @@
           <p class="skill">Estimate angles, aim the laser, then measure with a protractor.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -673,8 +691,8 @@
           <p class="skill">Use four numbers and + − × ÷ to hit the target.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -688,8 +706,8 @@
           <p class="skill">Feed the machine numbers and crack its secret rule.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -703,8 +721,8 @@
           <p class="skill">Fill the grid so every row and column works, and every cage adds up.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -718,8 +736,8 @@
           <p class="skill">Sow stones, fill your store. Avalanche and Classic rules.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -733,8 +751,8 @@
           <p class="skill">Race your ball to the top; your color walls let you through, the other color stops you cold.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -748,8 +766,8 @@
           <p class="skill">Cut, top and serve pizzas to order.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
       </div>
@@ -768,8 +786,8 @@
           <p class="skill">A 3,000-year-old game of placing and sliding stones to line up three in a row — spatial reasoning and planning two moves ahead.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -783,8 +801,8 @@
           <p class="skill">The bigger, deeper sibling of Three Men's Morris — more pieces, more lines, and real multi-step strategic planning.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -798,8 +816,8 @@
           <p class="skill">The classic — drop discs, spot the threat before it lands, and think a few moves past your opponent's next move.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card">
@@ -813,8 +831,8 @@
           <p class="skill">A pencil-and-paper classic — every line you draw is a small trade-off, and counting ahead keeps you from handing your opponent a free box.</p>
           <a class="play-btn active" href="play/dots-and-boxes/index.html">Play free in browser &rarr;</a>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -828,8 +846,8 @@
           <p class="skill">Tic-tac-toe with a twist — the board itself shifts, so kids have to keep re-reading the grid instead of memorizing one plan.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -843,8 +861,8 @@
           <p class="skill">Coordinate grids and process of elimination — every shot is a hypothesis, every hit or miss narrows down where to look next.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -858,8 +876,8 @@
           <p class="skill">A rhythm and pattern-memory game — listen, repeat, and hold a growing sequence in your head as it gets longer.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -873,8 +891,8 @@
           <p class="skill">Drag-and-drop programming blocks to steer a rover through a maze — an honest first taste of sequencing, loops, and conditionals.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -888,8 +906,8 @@
           <p class="skill">An ancient counting game that's secretly about binary numbers — kids learn to see piles of stones as powers of two without ever calling it math.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -903,8 +921,8 @@
           <p class="skill">Tap where the number goes on the line.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -918,8 +936,8 @@
           <p class="skill">Cover words that mean the same, or the opposite. Four in a row wins.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
         <div class="game-card is-locked">
@@ -933,8 +951,8 @@
           <p class="skill">Ask yes/no questions about shapes to find the secret one.</p>
           <span class="play-btn inactive" aria-disabled="true"><svg class="lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/></svg> Web version locked</span>
           <div class="store-row">
-            <span class="store-badge" aria-disabled="true">App Store <em>Coming soon</em></span>
-            <span class="store-badge" aria-disabled="true">Google Play <em>Coming soon</em></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-appstore"/></svg><span>App Store <em>Coming soon</em></span></span>
+            <span class="store-badge" aria-disabled="true"><svg class="store-ico" aria-hidden="true"><use href="#ico-play"/></svg><span>Google Play <em>Coming soon</em></span></span>
           </div>
         </div>
       </div>
