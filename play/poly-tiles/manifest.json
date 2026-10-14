@@ -1,0 +1,35 @@
+{
+    "name": "Poly Tiles",
+    "short_name": "Poly Tiles",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#884444",
+    "theme_color": "#884444",
+    "description": "Polynomials as tiles: combine terms, read roots, build squares.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
